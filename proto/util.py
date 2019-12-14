@@ -34,17 +34,22 @@ def loadImages(*files):
         imgs.append(loadImage(f))
     return imgs
 
-def pullFrames(file,sx,sy,ix,iy,convert=True):
+def pullFrames(file,sx,sy,ix,iy,convert=True,flip=False):
     file = os.path.join(mainDir,'img',file)
     frames = []
     if convert:
         sh = pg.image.load(file).convert()
     else:
         sh = pg.image.load(file)
+    sh.convert_alpha()
     sh.set_colorkey((0,0,0))
     for y in range(0,sy,iy):
         for x in range(0,sx,ix):
             r = pg.Rect(x,y,ix,iy)
-            t = sh.subsurface(r)
-            frames.append(t)
+            if flip:
+                t = pg.transform.flip(sh.subsurface(r),True,True)
+                frames.append(t)
+            else:
+                t = sh.subsurface(r)
+                frames.append(t)
     return frames

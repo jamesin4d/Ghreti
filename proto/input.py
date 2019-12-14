@@ -6,6 +6,7 @@ class Input:
         self.bound = {}
         self.pressed = {}
         self.held = {"key": [], "joy": [],"dpad": []}
+# Todo bind controller and joystick input 
         self.bind("left", pg.K_a)
         self.bind("left",pg.K_LEFT)
         self.bind("right",pg.K_d)

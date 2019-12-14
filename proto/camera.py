@@ -58,11 +58,11 @@ class CameraLayeredUpdate(pygame.sprite.LayeredUpdates):
             r = self.target.rect
             sw = self.screen.get_width()
             sh = self.screen.get_height()
-            x = -r.center[0]+sw/2
-            y = - r.center[1]+sh/2
+            x = -r.center[0]+sw/4# these numbers are for the inverse
+            y = - r.center[1]+sh/4# of the canvas scale
             self.cam += (pygame.Vector2((x,y))-self.cam)*0.05
-            self.cam.x = max(-(self.worldSize.width-sw), min(0,self.cam.x))
-            self.cam.y = max(-(self.worldSize.height-sh), min(0,self.cam.y))
+            self.cam.x = max(-(self.worldSize.width-sw/2), min(0,self.cam.x))
+            self.cam.y = max(-(self.worldSize.height-sh/2), min(0,self.cam.y))
 
     def draw(self,surface):
         sd = self.spritedict

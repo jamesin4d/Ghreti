@@ -27,6 +27,20 @@ class Generator:
         'wall' : self.terrain[34]
         }
         self.characterLevel = []
+
+    def newLevel(self,h,w,mr,minrs,maxrs,ro,rc,rs):
+        self.width = w
+        self.height = h
+        self.levelRect = (w*self.tileSize,h*self.tileSize)
+        self.maxRooms = mr
+        self.minRoomSize = minrs
+        self.maxRoomSize = maxrs
+        self.roomsOverlap = ro
+        self.randomConnections = rc
+        self.randomSpurs = rs
+        self.level = self.rooms = self.halls = self.characterLevel = []
+        self.generateLevel()
+
     def generateRoom(self):
         w = random.randint(self.minRoomSize,self.maxRoomSize)
         h = random.randint(self.minRoomSize,self.maxRoomSize)
