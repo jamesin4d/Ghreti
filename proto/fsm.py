@@ -22,7 +22,7 @@ class Engine:
 class State:
     def __init__(self):
         self.done = False
-        self.next = None
+        self.nextState = None
         self.paused = False
         self.killPrev = False
         self.clock = pg.time.Clock()
@@ -52,7 +52,7 @@ class State:
     def togglePause(self):
         self.paused = not self.paused
         self.done = False
-        self.next = None
+        self.nextState = None
     def mainStart(self):
         pass
     def update(self):
@@ -60,7 +60,7 @@ class State:
     def quit(self):
         self.done = True
         self.screen.fill((30,30,30))
-        return self.next,self.paused
+        return self.nextState,self.paused
     def closeGame(self):
         sys.exit(0)
     def mainloop(self):
@@ -70,4 +70,4 @@ class State:
             self.update()
             self.tick()
             pg.event.pump()
-        return self.next,self.paused
+        return self.nextState,self.paused

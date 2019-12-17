@@ -8,6 +8,12 @@ class dummySound:
 
 mainDir =  os.path.split(os.path.abspath(__file__))[0]
 
+
+def printTo(surface,text,x,y=0,fontSize = 12,font=None):
+    f = pg.font.Font(font,fontSize)
+    t = f.render(text,1,(254,254,254))
+    pos = [x,10+16*y]
+    surface.blit(t,pos)
 #helper functions
 #---------------------------------------------
 def loadSound(file):
